@@ -1,0 +1,19 @@
+<h1> Please choose three categories that you are most interested in. </h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action = "{% url 'events:category_results' %}" method = "post">
+
+{% csrf_token %}
+
+{% for category in categories %}
+	<input type="checkbox" name = "checks" id="choice{{ forloop.counter }}" value="{{category.id}}">	
+	<label for="choice{{ forloop.counter }}">{{ category.name }}</label><br/>
+{% endfor %}
+
+<input type="hidden" name = "page" value = "1">
+
+<input type="submit" value="OK">
+</form>
+
+

@@ -1,0 +1,16 @@
+{% for event in eventbucket %}
+	<ul>
+		<li>
+			NAME:{{ event.name.text }}<br>
+			{{ event.description.text }}
+		</li>
+	</ul>
+{% endfor %}
+
+
+{% if page|add:'0' > 1 %}
+	<a href="{% url 'events:page' priorPage %}">previous_page</a>
+{% endif %}
+
+
+<a href="{% url 'events:page' nextPage %}">next_page</a>
